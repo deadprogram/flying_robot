@@ -21,13 +21,17 @@ class FlyingRobotGenerator < RubiGen::Base
       m.directory ''
       BASEDIRS.each { |path| m.directory path }
 
-      # Create stubs
-      m.template 'sketch.rb.erb'   , "#{app_name}.rb"
-      # m.template "template.rb",  "some_file_after_erb.rb"
-      # m.template_copy_each ["template.rb", "template2.rb"]
-      # m.file     "file",         "some_file_copied"
-      # m.file_copy_each ["path/to/file", "path/to/file2"]
-
+      # create stub
+      m.template 'sketch.rb.erb'   , "#{base_name}.rb"
+      
+      # copy plugins
+      m.file     "plugins/battery.rb",                                  "vendor/plugins/battery.rb"
+      m.file     "plugins/flying_robot.rb",                             "vendor/plugins/flying_robot.rb"
+      m.file     "plugins/Hmc6352_compass.rb",                          "vendor/plugins/Hmc6352_compass.rb"
+      m.file     "plugins/pololu_ir_receiver.rb",                       "vendor/plugins/pololu_ir_receiver.rb"
+      m.file     "plugins/pololu_micro_serial_controller.rb",           "vendor/plugins/pololu_micro_serial_controller.rb"
+      m.file     "plugins/pololu_qik_dual_serial_motor_controller.rb",  "vendor/plugins/pololu_qik_dual_serial_motor_controller.rb"
+      
       m.dependency "install_rubigen_scripts", [destination_root, 'flying_robot'],
         :shebang => options[:shebang], :collision => :force
     end
@@ -63,10 +67,7 @@ EOS
     # Installation skeleton.  Intermediate directories are automatically
     # created so don't sweat their absence here.
     BASEDIRS = %w(
-      lib
-      log
-      script
-      test
-      tmp
+      vendor/plugins
+      examples
     )
 end
