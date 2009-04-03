@@ -9,7 +9,7 @@ $hoe = Hoe.new('flying_robot', FlyingRobot::VERSION) do |p|
   p.post_install_message = 'PostInstall.txt' # TODO remove if post-install message not required
   p.rubyforge_name       = p.name # TODO this is default value
   # p.extra_deps         = [
-  #   ['activesupport','>= 2.0.2'],
+  #   ['rad','>= 0.3.1'],
   # ]
   p.extra_dev_deps = [
     ['newgem', ">= #{::Newgem::VERSION}"]

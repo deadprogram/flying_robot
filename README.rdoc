@@ -1,32 +1,33 @@
 = flying_robot
 
-* FIX (url)
+* flying_robot takes a standard Ruby Arduino Development (RAD) project, and turns it into a Unmanned Aerial Vehicle (UAV)
 
 == DESCRIPTION:
 
-FIX (describe your package)
+flying_robot takes a standard Ruby Arduino Development (RAD) project, and turns it into a Unmanned Aerial Vehicle (UAV)
 
 == FEATURES/PROBLEMS:
 
-* FIX (list of features or problems)
+* Plugins for RAD for cool UAV-related hardware, like Pololu motor controllers and digital compass
+* More plugins coming soon to support available Arduino-based systems like Blimpduino and ArduPilot
 
 == SYNOPSIS:
 
-  FIX (code sample of usage)
+  flying_robot takes a standard Ruby Arduino Development (RAD) project, and turns it into a Unmanned Aerial Vehicle (UAV)
 
 == REQUIREMENTS:
 
-* FIX (list of requirements)
+* sudo gem install rad
 
 == INSTALL:
 
-* FIX (sudo gem install, anything else)
+* sudo gem install flying_robot
 
 == LICENSE:
 
 (The MIT License)
 
-Copyright (c) 2009 FIXME full name
+Copyright (c) 2009 Ron Evans
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

@@ -1,5 +1,7 @@
 Description:
   
+  flying_robot takes a standard Ruby Arduino Development (RAD) project, and turns it into a Unmanned Aerial Vehicle (UAV)
   
 Usage:
   
+  flying_robot [appname]
