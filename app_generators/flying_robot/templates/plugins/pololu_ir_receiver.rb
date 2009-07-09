@@ -8,10 +8,36 @@ class PololuIrReceiver < ArduinoPlugin
   external_variables "unsigned long ir_beacon_refresh_rate = 500"
   external_variables "unsigned long ir_beacon_last_reading_time = 0"
   
+  plugin_directives "#define IR_BEACON_NOT_FOUND 0"
+  plugin_directives "#define IR_BEACON_FORWARD 1"
+  plugin_directives "#define IR_BEACON_RIGHT 2"
+  plugin_directives "#define IR_BEACON_BACK 3"
+  plugin_directives "#define IR_BEACON_LEFT 4"
+  
   # this function returns either 0, meaning the IR beacon was not found
   # or else 1 = Forward, 2 = Right, 3 = Back, 4 = Left
   int current_ir_beacon_direction() {
     return ir_beacon_direction ;
+  }  
+  
+  boolean ir_beacon_not_detected() {
+    return ir_beacon_direction == IR_BEACON_NOT_FOUND ;
+  }
+
+  boolean ir_beacon_forward() {
+    return ir_beacon_direction == IR_BEACON_FORWARD ;
+  }
+
+  boolean ir_beacon_right() {
+    return ir_beacon_direction == IR_BEACON_RIGHT ;
+  }
+
+  boolean ir_beacon_back() {
+    return ir_beacon_direction == IR_BEACON_BACK ;
+  }
+
+  boolean ir_beacon_left() {
+    return ir_beacon_direction == IR_BEACON_LEFT ;
   }
     
   void reset_ir_receiver() {

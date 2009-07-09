@@ -2,3 +2,8 @@
 
 * 1 major enhancement:
   * Initial release
+
+== 0.0.2 2009-07-08
+
+* 1 major enhancement:
+  * Plugin support for all hardware included with Blimpduino, including L293D and Maxsonar Ultrasonic range finder

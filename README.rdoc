@@ -8,12 +8,21 @@ flying_robot takes a standard Ruby Arduino Development (RAD) project, and turns 
 
 == FEATURES/PROBLEMS:
 
-* Plugins for RAD for cool UAV-related hardware, like Pololu motor controllers and digital compass
-* More plugins coming soon to support available Arduino-based systems like Blimpduino and ArduPilot
+* Plugins for RAD for cool UAV-related hardware, like Pololu motor controllers and Honeywell digital compass
+* Complete support for Blimpduino hardware
+* More plugins coming soon to support other available Arduino-based systems like ArduPilot
 
 == SYNOPSIS:
 
-  flying_robot takes a standard Ruby Arduino Development (RAD) project, and turns it into a Unmanned Aerial Vehicle (UAV)
+flying_robot takes a standard Ruby Arduino Development (RAD) project, and turns it into a Unmanned Aerial Vehicle (UAV). It includes plugin support for the following hardware:
+
+* LiPo Battery Voltage
+* Honeywell HMC6352 Digital Compass
+* L293D Motor Driver
+* Maxbotix Maxsonar Ultrasonic Range Finder
+* Pololu Infrared Detector Array
+* Pololu Micro Serial Motor Controller
+* Pololu QIK Dual Serial Motor Controller
 
 == REQUIREMENTS:
 
@@ -21,7 +30,7 @@ flying_robot takes a standard Ruby Arduino Development (RAD) project, and turns 
 
 == INSTALL:
 
-* sudo gem install flying_robot
+* sudo gem install deadprogrammer-flying_robot
 
 == LICENSE:
 

@@ -31,6 +31,8 @@ class FlyingRobotGenerator < RubiGen::Base
       m.file     "plugins/pololu_ir_receiver.rb",                       "vendor/plugins/pololu_ir_receiver.rb"
       m.file     "plugins/pololu_micro_serial_controller.rb",           "vendor/plugins/pololu_micro_serial_controller.rb"
       m.file     "plugins/pololu_qik_dual_serial_motor_controller.rb",  "vendor/plugins/pololu_qik_dual_serial_motor_controller.rb"
+      m.file     "plugins/L293d.rb",                                    "vendor/plugins/L293d.rb"
+      m.file     "plugins/maxsonar.rb",                                 "vendor/plugins/maxsonar.rb"
       
       m.dependency "install_rubigen_scripts", [destination_root, 'flying_robot'],
         :shebang => options[:shebang], :collision => :force
