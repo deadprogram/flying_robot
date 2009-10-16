@@ -15,7 +15,7 @@ class L293d < ArduinoPlugin
       digitalWrite(directionPin, LOW);
       analogWrite(speedPin, speed);
     } else {
-      speed = 250 - speed ;
+      speed = 255 - speed ;
       digitalWrite(directionPin, HIGH);
       analogWrite(speedPin, speed);
     }
