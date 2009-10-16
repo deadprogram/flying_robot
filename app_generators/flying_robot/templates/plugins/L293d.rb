@@ -2,6 +2,9 @@
 # Written by Ron Evans (http://deadprogrammersociety.com) for the flying_robot project
 #
 #
+# Adapted from code written by Jordi Muñoz for the Blimpduino project 
+# http://blimpduino.googlecode.com/svn/trunk/Motors.pde
+#
 class L293d < ArduinoPlugin
   plugin_directives "#define FORWARD 1"
   plugin_directives "#define REVERSE 0"
