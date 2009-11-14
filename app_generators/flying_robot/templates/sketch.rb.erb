@@ -1,8 +1,8 @@
 # <%= base_name %>
 #
-# Based on flying_robot library (http://flyingrobo.com)
 # Uses Ruby Arduino Development to create Unmanned Aerial Vehicles
 # Written by Ron Evans (http://deadprogrammersociety.com)
+# Based on flying_robot library (http://flyingrobo.com)
 #
 # This sketch that uses the flying_robot parser, you just need to implement the methods that make up its interface
 # so that it will respond to the standard command set.
@@ -16,14 +16,17 @@
 # (r)udder - Set the rudder. This command supports two parameters:
 #   direction - enter 'l' for left, 'c' for centered, or 'r' for right
 #   deflection - enter an angle between 0 and 90 degrees
+# (a)ilerons - Set the ailerons. This command supports two parameters:
+#   direction - enter 'l' for left, 'c' for centered, or 'r' for right
+#   deflection - enter an angle between 0 and 90 degrees
 # (t)hrottle - Set the throttle. This command supports two parameters:
 #   direction - enter 'f' for forward, or 'r' for reverse
 #   speed - enter a percentage from 0 to 100
 # (i)nstruments - Read the current data for one of the installed instruments on the UAV. This command supports one parameter:
-#   id - enter an id for which instrment readings should be returned from. If there is not an instrument installed
-#        for that id 'Invalid instrument' should be returned
-# (a)utopilot - Turns on/off the autopilot. This command supports one parameter:
-#   id - enter an id for which autopilot routine should be turned on. Entering '0' is reserved to turn Off the autopilot.
+#   id - enter an integer for which instrment readings should be returned from. If there is not an instrument installed
+#        for that id 'Invalid instrument' will be returned
+# (p)rogram - Engage whatever autopilot program is available, if any. This command supports one parameter:
+#   id - enter an integer for which autopilot routine should be used. Enter 0 to cancel autopilot
 #
 class <%= base_name.camelize -%> < ArduinoSketch
   serial_begin :rate => 9600
@@ -45,6 +48,10 @@ class <%= base_name.camelize -%> < ArduinoSketch
   
   def elevators
     print_current_command("Elevators", current_elevator_deflection)
+  end
+
+  def ailerons
+    print_current_command("Ailerons", current_ailerons_deflection)
   end
     
   def rudder

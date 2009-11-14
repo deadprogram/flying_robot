@@ -13,14 +13,17 @@
 # (r)udder - Set the rudder. This command supports two parameters:
 #   direction - enter 'l' for left, 'c' for centered, or 'r' for right
 #   deflection - enter an angle between 0 and 90 degrees
+# (a)ilerons - Set the ailerons. This command supports two parameters:
+#   direction - enter 'l' for left, 'c' for centered, or 'r' for right
+#   deflection - enter an angle between 0 and 90 degrees
 # (t)hrottle - Set the throttle. This command supports two parameters:
 #   direction - enter 'f' for forward, or 'r' for reverse
 #   speed - enter a percentage from 0 to 100
 # (i)nstruments - Read the current data for one of the installed instruments on the UAV. This command supports one parameter:
 #   id - enter an integer for which instrment readings should be returned from. If there is not an instrument installed
 #        for that id 'Invalid instrument' will be returned
-# (a)utopilot - Engage whatever autopilot is available, if any. This command supports one parameter:
-#   program - enter an integer for which autopilot routine should be used. Enter 0 to cancel autopilot
+# (p)rogram - Engage whatever autopilot program is available, if any. This command supports one parameter:
+#   id - enter an integer for which autopilot routine should be used. Enter 0 to cancel autopilot
 #
 class FlyingRobot < ArduinoPlugin
   # used for parsing input commands
@@ -42,6 +45,10 @@ class FlyingRobot < ArduinoPlugin
   # current rudder values
   external_variables "char rudder_direction[1]"
   external_variables "int rudder_deflection = 0"
+
+  # current aileron values
+  external_variables "char aileron_direction[1]"
+  external_variables "int aileron_deflection = 0"
   
   # current throttle values
   external_variables "char throttle_direction[1]"
@@ -86,6 +93,14 @@ class FlyingRobot < ArduinoPlugin
   
   int current_elevator_deflection() {
     return elevator_deflection ;
+  }
+
+  char current_aileron_direction() {
+    return aileron_direction[0];
+  }
+  
+  int current_aileron_deflection() {
+    return aileron_deflection ;
   }
 
   char current_rudder_direction() {
@@ -225,6 +240,16 @@ class FlyingRobot < ArduinoPlugin
       }
       
       rudder();
+    } else if (cmd == 'a') { 
+      parse_direction_code();
+      parse_command_value(4);
+      aileron_direction[0] = current_command_direction();
+      aileron_deflection = current_command_value();
+      if (aileron_deflection > 90) {
+        aileron_deflection = 90 ;
+      }
+
+      ailerons();
     } else if (cmd == 't') {
       parse_direction_code();
       parse_command_value(4);
@@ -238,7 +263,7 @@ class FlyingRobot < ArduinoPlugin
     } else if (cmd == 'i') {    
       parse_instrument_code();
       instruments();
-    } else if (cmd == 'a') {    
+    } else if (cmd == 'p') {    
       parse_autopilot_code();
       if (autopilot_code[0] == '0') {
         autopilot_off();
