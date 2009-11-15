@@ -2,6 +2,7 @@ History.txt
 Manifest.txt
 PostInstall.txt
 README.rdoc
+README.txt
 Rakefile
 app_generators/flying_robot/USAGE
 app_generators/flying_robot/flying_robot_generator.rb
