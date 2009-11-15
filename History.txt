@@ -7,3 +7,8 @@
 
 * 1 major enhancement:
   * Plugin support for all hardware included with Blimpduino, including L293D and Maxsonar Ultrasonic range finder
+
+== 0.0.3 2009-11-14
+
+* 1 major enhancement:
+  * Update parser for aileron command support
