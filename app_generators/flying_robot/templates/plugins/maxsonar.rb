@@ -5,13 +5,13 @@
 class Maxsonar < ArduinoPlugin
   external_variables "unsigned long maxsonar_refresh_rate = 1000"
   external_variables "unsigned long maxsonar_last_reading_time = 0"
-  external_variables "long last_maxsonar_distance = 0"
+  external_variables "int last_maxsonar_distance = 0"
   external_variables "int ping_rx"
   external_variables "bool maxsonar_init_complete"
   
   add_to_setup "maxsonar_init_complete = false;"
   
-  long maxsonar_distance () {
+  int maxsonar_distance () {
     return last_maxsonar_distance ;
   }
   
@@ -26,16 +26,15 @@ class Maxsonar < ArduinoPlugin
     
     delay(250);
     digitalWrite(reset_pin, HIGH);
+    digitalWrite(reset_pin, LOW); // Activating MCU internal pull-down resistor
+    digitalWrite(reset_pin, HIGH);
     delay(100);
     last_maxsonar_distance = 0;
     maxsonar_init_complete = true ;
   }
 
   int read_maxsonar(int an_pin) {
-    int dist = 0 ;
-    dist = analogRead(an_pin); 
-    dist = (dist / 2); 
-    return dist;
+    return analogRead(an_pin) / 2 ;
   }
   
   void update_maxsonar(int an_pin, int reset_pin) {
